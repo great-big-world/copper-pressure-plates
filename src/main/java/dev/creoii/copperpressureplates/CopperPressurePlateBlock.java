@@ -68,7 +68,7 @@ public class CopperPressurePlateBlock extends WeatheringCopperFullBlock {
     }
 
     @Override
-    protected void entityInside(BlockState state, Level world, BlockPos pos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier, boolean bl) {
+    protected void entityInside(BlockState state, Level world, BlockPos pos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier) {
         if (!world.isClientSide()) {
             if (state.getValue(STATE) == State.UP) {
                 world.playSound(null, pos, BlockSetType.COPPER.pressurePlateClickOn(), SoundSource.BLOCKS);
