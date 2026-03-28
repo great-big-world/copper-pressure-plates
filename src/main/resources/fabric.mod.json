@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "copper_pressure_plates",
+  "version": "${version}",
+
+  "name": "Copper Pressure Plates",
+  "description": "Copper Pressure Plates with a unique function",
+  "authors": ["creoii"],
+  "contact": {},
+
+  "license": "All-Rights-Reserved",
+  "icon": "assets/copper_pressure_plates/logo.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": ["dev.creoii.copperpressureplates.CopperPressurePlates"]
+  },
+
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  },
+  "custom": {
+    "modmenu": {
+      "parent": {
+        "id": "great_big_world",
+        "name": "Great Big World",
+        "description": ""
+      }
+    }
+  }
+}
