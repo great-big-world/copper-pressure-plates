@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "#": "minecraft:waxed_copper_block"
+    "#": {
+      "item": "minecraft:waxed_copper_block"
+    }
   },
   "pattern": [
     "##"

@@ -3,8 +3,6 @@ package dev.creoii.copperpressureplates;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -51,10 +49,10 @@ public final class CopperPressurePlateItems {
     }
 
     public static Item registerBlockItem(ResourceLocation id, Block block) {
-        return registerItem(id, settings1 -> new BlockItem(block, settings1.setId(ResourceKey.create(Registries.ITEM, id)).useBlockDescriptionPrefix()));
+        return registerItem(id, settings1 -> new BlockItem(block, settings1));
     }
 
     public static Item registerItem(ResourceLocation id, Function<Item.Properties, Item> factory) {
-        return Registry.register(BuiltInRegistries.ITEM, id, factory.apply(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, id))));
+        return Registry.register(BuiltInRegistries.ITEM, id, factory.apply(new Item.Properties()));
     }
 }

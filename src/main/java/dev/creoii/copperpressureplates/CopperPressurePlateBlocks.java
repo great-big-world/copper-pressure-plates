@@ -3,8 +3,6 @@ package dev.creoii.copperpressureplates;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -45,6 +43,6 @@ public final class CopperPressurePlateBlocks {
     }
 
     public static Block registerBlock(ResourceLocation id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings) {
-        return Registry.register(BuiltInRegistries.BLOCK, id, factory.apply(settings.setId(ResourceKey.create(Registries.BLOCK, id))));
+        return Registry.register(BuiltInRegistries.BLOCK, id, factory.apply(settings));
     }
 }

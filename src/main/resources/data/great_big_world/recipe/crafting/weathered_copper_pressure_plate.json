@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "#": "minecraft:weathered_copper"
+    "#": {
+      "item": "minecraft:weathered_copper"
+    }
   },
   "pattern": [
     "##"

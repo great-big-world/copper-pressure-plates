@@ -8,12 +8,11 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WeatheringCopper;
@@ -29,9 +28,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class CopperPressurePlateBlock extends WeatheringCopperFullBlock {
-    private static final VoxelShape PRESSED_SHAPE = Block.column(14f, 0f, .5f);
-    private static final VoxelShape DEFAULT_SHAPE = Block.column(14f, 0f, 1f);
-    protected static final AABB BOX = Block.column(14f, 0f, 4f).toAabbs().getFirst();
+    private static final VoxelShape PRESSED_SHAPE = Block.box(1.0F, 0.0F, 1.0F, 15.0F, 0.5F, 15.0F);
+    private static final VoxelShape DEFAULT_SHAPE = Block.box(1.0F, 0.0F, 1.0F, 15.0F, 1.0F, 15.0F);
+    protected static final AABB BOX = new AABB(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.25F, 0.9375F);
     public static final EnumProperty<State> STATE = EnumProperty.create("state", State.class);
     private final WeatheringCopper.WeatherState oxidationLevel;
 
@@ -49,8 +48,9 @@ public class CopperPressurePlateBlock extends WeatheringCopperFullBlock {
         return true;
     }
 
-    protected BlockState updateShape(BlockState state, LevelReader world, ScheduledTickAccess tickView, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
-        return direction == Direction.DOWN && !state.canSurvive(world, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, world, tickView, pos, direction, neighborPos, neighborState, random);
+    @Override
+    protected BlockState updateShape(BlockState state, Direction direction, BlockState blockState2, LevelAccessor world, BlockPos pos, BlockPos blockPos2) {
+        return direction == Direction.DOWN && !state.canSurvive(world, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, blockState2, world, pos, blockPos2);
     }
 
     protected boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
@@ -68,7 +68,7 @@ public class CopperPressurePlateBlock extends WeatheringCopperFullBlock {
     }
 
     @Override
-    protected void entityInside(BlockState state, Level world, BlockPos pos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier) {
+    protected void entityInside(BlockState state, Level world, BlockPos pos, Entity entity) {
         if (!world.isClientSide()) {
             if (state.getValue(STATE) == State.UP) {
                 world.playSound(null, pos, BlockSetType.COPPER.pressurePlateClickOn(), SoundSource.BLOCKS);
