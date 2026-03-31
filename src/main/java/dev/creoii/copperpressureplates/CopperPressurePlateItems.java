@@ -1,6 +1,6 @@
 package dev.creoii.copperpressureplates;
 
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -34,19 +34,19 @@ public final class CopperPressurePlateItems {
         WAXED_WEATHERED_COPPER_PRESSURE_PLATE = registerBlockItem(Identifier.fromNamespaceAndPath(CopperPressurePlates.NAMESPACE, "waxed_weathered_copper_pressure_plate"), CopperPressurePlateBlocks.WAXED_WEATHERED_COPPER_PRESSURE_PLATE);
         WAXED_OXIDIZED_COPPER_PRESSURE_PLATE = registerBlockItem(Identifier.fromNamespaceAndPath(CopperPressurePlates.NAMESPACE, "waxed_oxidized_copper_pressure_plate"), CopperPressurePlateBlocks.WAXED_OXIDIZED_COPPER_PRESSURE_PLATE);
 
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(entries -> {
-            entries.addAfter(Items.HEAVY_WEIGHTED_PRESSURE_PLATE, COPPER_PRESSURE_PLATE, EXPOSED_COPPER_PRESSURE_PLATE, WEATHERED_COPPER_PRESSURE_PLATE, OXIDIZED_COPPER_PRESSURE_PLATE);
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(entries -> {
+            entries.insertAfter(Items.HEAVY_WEIGHTED_PRESSURE_PLATE, COPPER_PRESSURE_PLATE, EXPOSED_COPPER_PRESSURE_PLATE, WEATHERED_COPPER_PRESSURE_PLATE, OXIDIZED_COPPER_PRESSURE_PLATE);
         });
 
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(entries -> {
-            entries.addAfter(Items.COPPER_CHAIN.unaffected(), COPPER_PRESSURE_PLATE);
-            entries.addAfter(Items.COPPER_CHAIN.exposed(), EXPOSED_COPPER_PRESSURE_PLATE);
-            entries.addAfter(Items.COPPER_CHAIN.weathered(), WEATHERED_COPPER_PRESSURE_PLATE);
-            entries.addAfter(Items.COPPER_CHAIN.oxidized(), OXIDIZED_COPPER_PRESSURE_PLATE);
-            entries.addAfter(Items.COPPER_CHAIN.waxed(), WAXED_COPPER_PRESSURE_PLATE);
-            entries.addAfter(Items.COPPER_CHAIN.waxedExposed(), WAXED_EXPOSED_COPPER_PRESSURE_PLATE);
-            entries.addAfter(Items.COPPER_CHAIN.waxedWeathered(), WAXED_WEATHERED_COPPER_PRESSURE_PLATE);
-            entries.addAfter(Items.COPPER_CHAIN.waxedOxidized(), WAXED_OXIDIZED_COPPER_PRESSURE_PLATE);
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.BUILDING_BLOCKS).register(entries -> {
+            entries.insertAfter(Items.COPPER_CHAIN.unaffected(), COPPER_PRESSURE_PLATE);
+            entries.insertAfter(Items.COPPER_CHAIN.exposed(), EXPOSED_COPPER_PRESSURE_PLATE);
+            entries.insertAfter(Items.COPPER_CHAIN.weathered(), WEATHERED_COPPER_PRESSURE_PLATE);
+            entries.insertAfter(Items.COPPER_CHAIN.oxidized(), OXIDIZED_COPPER_PRESSURE_PLATE);
+            entries.insertAfter(Items.COPPER_CHAIN.waxed(), WAXED_COPPER_PRESSURE_PLATE);
+            entries.insertAfter(Items.COPPER_CHAIN.waxedExposed(), WAXED_EXPOSED_COPPER_PRESSURE_PLATE);
+            entries.insertAfter(Items.COPPER_CHAIN.waxedWeathered(), WAXED_WEATHERED_COPPER_PRESSURE_PLATE);
+            entries.insertAfter(Items.COPPER_CHAIN.waxedOxidized(), WAXED_OXIDIZED_COPPER_PRESSURE_PLATE);
         });
     }
 

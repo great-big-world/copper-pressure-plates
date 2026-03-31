@@ -1,0 +1,22 @@
+{
+  "stats": {
+    "minecraft:used": {
+      "great_big_world:copper_pressure_plate": 1,
+      "great_big_world:oxidized_copper_pressure_plate": 1,
+      "minecraft:redstone": 1
+    },
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 921,
+      "minecraft:walk_one_cm": 4835,
+      "minecraft:total_world_time": 930,
+      "minecraft:leave_game": 1,
+      "minecraft:fly_one_cm": 889,
+      "minecraft:crouch_one_cm": 18,
+      "minecraft:sneak_time": 42,
+      "minecraft:play_time": 921,
+      "minecraft:jump": 2,
+      "minecraft:time_since_death": 921
+    }
+  },
+  "DataVersion": 4786
+}

@@ -35,13 +35,13 @@ public final class CopperPressurePlateBlocks {
         WAXED_WEATHERED_COPPER_PRESSURE_PLATE = registerBlock(Identifier.fromNamespaceAndPath(CopperPressurePlates.NAMESPACE, "waxed_weathered_copper_pressure_plate"), settings -> new CopperPressurePlateBlock(WeatheringCopper.WeatherState.WEATHERED, settings), BlockBehaviour.Properties.ofFullCopy(Blocks.HEAVY_WEIGHTED_PRESSURE_PLATE).sound(SoundType.COPPER).mapColor(MapColor.WARPED_STEM));
         WAXED_OXIDIZED_COPPER_PRESSURE_PLATE = registerBlock(Identifier.fromNamespaceAndPath(CopperPressurePlates.NAMESPACE, "waxed_oxidized_copper_pressure_plate"), settings -> new CopperPressurePlateBlock(WeatheringCopper.WeatherState.OXIDIZED, settings), BlockBehaviour.Properties.ofFullCopy(Blocks.HEAVY_WEIGHTED_PRESSURE_PLATE).sound(SoundType.COPPER).mapColor(MapColor.WARPED_NYLIUM));
 
-        OxidizableBlocksRegistry.registerOxidizableBlockPair(COPPER_PRESSURE_PLATE, EXPOSED_COPPER_PRESSURE_PLATE);
-        OxidizableBlocksRegistry.registerOxidizableBlockPair(EXPOSED_COPPER_PRESSURE_PLATE, WEATHERED_COPPER_PRESSURE_PLATE);
-        OxidizableBlocksRegistry.registerOxidizableBlockPair(WEATHERED_COPPER_PRESSURE_PLATE, OXIDIZED_COPPER_PRESSURE_PLATE);
-        OxidizableBlocksRegistry.registerWaxableBlockPair(COPPER_PRESSURE_PLATE, WAXED_COPPER_PRESSURE_PLATE);
-        OxidizableBlocksRegistry.registerWaxableBlockPair(EXPOSED_COPPER_PRESSURE_PLATE, WAXED_EXPOSED_COPPER_PRESSURE_PLATE);
-        OxidizableBlocksRegistry.registerWaxableBlockPair(WEATHERED_COPPER_PRESSURE_PLATE, WAXED_WEATHERED_COPPER_PRESSURE_PLATE);
-        OxidizableBlocksRegistry.registerWaxableBlockPair(OXIDIZED_COPPER_PRESSURE_PLATE, WAXED_OXIDIZED_COPPER_PRESSURE_PLATE);
+        OxidizableBlocksRegistry.registerNextStage(COPPER_PRESSURE_PLATE, EXPOSED_COPPER_PRESSURE_PLATE);
+        OxidizableBlocksRegistry.registerNextStage(EXPOSED_COPPER_PRESSURE_PLATE, WEATHERED_COPPER_PRESSURE_PLATE);
+        OxidizableBlocksRegistry.registerNextStage(WEATHERED_COPPER_PRESSURE_PLATE, OXIDIZED_COPPER_PRESSURE_PLATE);
+        OxidizableBlocksRegistry.registerWaxable(COPPER_PRESSURE_PLATE, WAXED_COPPER_PRESSURE_PLATE);
+        OxidizableBlocksRegistry.registerWaxable(EXPOSED_COPPER_PRESSURE_PLATE, WAXED_EXPOSED_COPPER_PRESSURE_PLATE);
+        OxidizableBlocksRegistry.registerWaxable(WEATHERED_COPPER_PRESSURE_PLATE, WAXED_WEATHERED_COPPER_PRESSURE_PLATE);
+        OxidizableBlocksRegistry.registerWaxable(OXIDIZED_COPPER_PRESSURE_PLATE, WAXED_OXIDIZED_COPPER_PRESSURE_PLATE);
     }
 
     public static Block registerBlock(Identifier id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings) {
